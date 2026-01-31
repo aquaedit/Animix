@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <!-- Кодировка, чтобы нормально отображался русский текст -->
+    <meta charset="utf-8">
+
+    <!-- Адаптация под телефоны и планшеты -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Название вкладки браузера -->
+    <title>Kinibiz — Фильмы онлайн</title>
+
+    <!-- Подключаем красивый современный шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== ОБЩИЕ НАСТРОЙКИ САЙТА ===== */
+        body{
+            margin:0; /* убираем стандартные отступы */
+            font-family:'Montserrat', sans-serif; /* шрифт */
+            background:#0d0f14; /* тёмный фон */
+            color:white; /* белый текст */
+        }
+
+        /* ===== ВЕРХНЕЕ МЕНЮ ===== */
+        .menu{
+            background:#151822; /* фон меню */
+            padding:15px;
+            text-align:center;
+            position:sticky; /* меню липнет сверху */
+            top:0;
+            z-index:1000;
+        }
+
+        .menu a{
+            color:white;
+            text-decoration:none;
+            margin:0 20px;
+            font-weight:bold;
+        }
+
+        .menu a:hover{
+            color:#e50914; /* красный при наведении */
+        }
+
+        /* ===== ГЛАВНЫЙ ЗАГОЛОВОК ===== */
+        .begin{
+            text-align:center;
+            padding:40px 20px;
+        }
+
+        /* ===== КНОПКИ КАТЕГОРИЙ ===== */
+        .categories{
+            display:flex;
+            justify-content:center;
+            gap:12px;
+            margin-bottom:20px;
+        }
+
+        .categories button{
+            padding:10px 18px;
+            border:none;
+            border-radius:12px;
+            background:#1a1d29;
+            color:white;
+            cursor:pointer;
+        }
+
+        .categories button.active{
+            background:#e50914; /* активная кнопка */
+        }
+
+        /* ===== СЕТКА ФИЛЬМОВ ===== */
+        .films{
+            display:grid; /* сетка */
+            grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+            gap:30px;
+            padding:30px;
+            max-width:1400px;
+            margin:auto;
+        }
+
+        /* ===== КАРТОЧКА ФИЛЬМА ===== */
+        .film{
+            background:#151822;
+            border-radius:20px;
+            overflow:hidden; /* чтобы картинка не вылезала */
+            transition:0.3s;
+        }
+
+        .film:hover{
+            transform:translateY(-10px) scale(1.05); /* эффект наведения */
+        }
+
+        /* ===== КАРТИНКА ФИЛЬМА ===== */
+        .filmimg{
+            width:100%;
+            height:340px;
+            object-fit:cover; /* обрезка без искажений */
+        }
+
+        /* ===== ТЕКСТ В КАРТОЧКЕ ===== */
+        .film h3{
+            font-size:16px;
+            margin:10px;
+        }
+
+        .film p{
+            font-size:14px;
+            margin:5px 10px;
+            opacity:0.85;
+        }
+
+        /* описание — одна строка с троеточием */
+        .description{
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+
+        /* ===== КНОПКА ТРЕЙЛЕРА ===== */
+        .trailer-btn{
+            display:block;
+            margin:12px;
+            background:#e50914;
+            color:white;
+            padding:10px;
+            border-radius:12px;
+            text-align:center;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        .trailer-btn:hover{
+            background:white;
+            color:#e50914;
+        }
+
+        /* ===== БЛОКИ "О НАС" И "КОНТАКТЫ" ===== */
+        .section{
+            max-width:1000px;
+            margin:60px auto;
+            padding:30px;
+            background:#151822;
+            border-radius:16px;
+            text-align:center;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer{
+            background:#0a0c11;
+            text-align:center;
+            padding:30px;
+            color:#777;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ===== ВЕРХНЕЕ МЕНЮ ===== -->
+<nav class="menu">
+    <a href="#about">О нас</a>
+    <a href="#contacts">Контакты</a>
+</nav>
+
+<!-- ===== ЗАГОЛОВОК ===== -->
+<div class="begin">
+    <h1>🎥 Kinibiz</h1>
+    <p>Лучшие фильмы и аниме в одном месте</p>
+
+    <!-- Поле поиска -->
+    <input id="search" placeholder="Поиск фильмов..." style="padding:12px;border-radius:10px;width:250px;">
+</div>
+
+<!-- ===== КАТЕГОРИИ ===== -->
+<div class="categories">
+    <button data-cat="all" class="active">Все</button>
+    <button data-cat="movie">Фильмы</button>
+    <button data-cat="anime">Аниме</button>
+</div>
+
+<!-- ===== ФИЛЬМЫ ===== -->
+    <div class="films">
+       <div class="film" data-title="Demon Slayer Возвращение Акадзы" data-cat="anime">
+    <img src="https://us.oricon-group.com/upimg/detail/5000/5740/img660/demon-slayer-akaza-returns-box-office-2025.jpg" alt="DemonSlayer" class="filmimg">
+    <p><a href="https://youtu.be/x7uLutVRBfI?si=u0INFvNMVs3xb9rt" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Demon Slayer Возвращение Акадзы</h3>
+    <p><b>Жанр:</b> Аниме, Фэнтези, Экшн</p>
+    <p class="description">История о молодом охотнике на демонов, который сражается, чтобы спасти свою сестру и победить могущественных врагов.</p>
+</div>
+
+<div class="film" data-title="Веном 3" data-cat="movie">
+    <img src="https://upload.wikimedia.org/wikipedia/ru/0/05/Venom_poster.jpg" alt="Venom" class="filmimg">
+    <p><a href="https://youtu.be/u9Mv98Gr5pY?si=SFctuqWs1f5tubJ9" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Веном 3</h3>
+    <p><b>Жанр:</b> Фантастика, Боевик</p>
+    <p class="description">Веном возвращается, чтобы сразиться с новой опасной угрозой.</p>
+</div>
+
+<div class="film" data-title="Бэтмен" data-cat="movie">
+    <img src="https://m.media-amazon.com/images/M/MV5BMmU5NGJlMzAtMGNmOC00YjJjLTgyMzUtNjAyYmE4Njg5YWMyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Batman" class="filmimg">
+    <p><a href="https://youtu.be/mqqft2x_Aa4?si=muQIW7V64kSCcZiY" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Бэтмен</h3>
+    <p><b>Жанр:</b> Детектив, Боевик</p>
+    <p class="description">Мрачная атмосфера Готэма и загадочный преступник против Бэтмена.</p>
+</div>
+
+<div class="film" data-title="Человек-паук: Через вселенные" data-cat="movie">
+    <img src="https://simg.marwin.kz/media/catalog/product/cache/8d1771fdd19ec2393e47701ba45e606d/9/f/9f3cc805ce59e3d060dd346a6945f04e.jpg" alt="Spider Man" class="filmimg">
+    <p><a href="https://youtu.be/cqGjhVJWtEg?si=CT6zpOmwKBF9vyCw" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Человек-паук: Через вселенные</h3>
+    <p><b>Жанр:</b> Анимация, Приключения</p>
+    <p class="description">Майлз Моралес объединяет силы с другими версиями Спайдермена.</p>
+</div>
+
+<div class="film" data-title="Мстители: Финал" data-cat="movie">
+    <img src="https://cdn.marvel.com/content/2x/avengersendgame_lob_crd_05_0.jpg" alt="Avengers Endgame" class="filmimg">
+    <p><a href="https://youtu.be/x7uLutVRBfI?si=3TPzjJp2Hr0qqvF9" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Мстители: Финал</h3>
+    <p><b>Жанр:</b> Фантастика, Экшн</p>
+    <p class="description">Последняя битва за судьбу вселенной Marvel.</p>
+</div>
+
+<div class="film" data-title="Джокер" data-cat="movie">
+    <img src="https://www.tallengestore.com/cdn/shop/products/Joker_-_Put_On_A_Happy_Face_-_Joaquin_Phoenix_-_Hollywood_English_Movie_Poster_3_323b577e-3bbb-4080-ba96-c144869378a3.jpg?v=1579504974" alt="Joker" class="filmimg">
+    <p><a href="https://youtu.be/zAGVQLHvwOY?si=zxGNieem9oh-3tBq" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Джокер</h3>
+    <p><b>Жанр:</b> Драма, Триллер</p>
+    <p class="description">История превращения обычного человека в символ хаоса.</p>
+</div>
+
+
+<div class="film" data-title="Tokyo Revengers,Токийские мстители" data-cat="anime">
+    <img src="https://m.media-amazon.com/images/M/MV5BNGU3YzdhMWEtMGRkMC00MzY2LThkOGEtMDFmZDE0NGQxYzFjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Tokyo Revengers" class="filmimg">
+    <p><a href="https://youtu.be/FfKzKZ1ZzR0" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Tokyo Revengers</h3>
+    <p><b>Жанр:</b> Аниме, Драма, Путешествия во времени</p>
+    <p class="description">Такэмичи пытается спасти своих друзей, изменяя прошлое, чтобы предотвратить трагедию.</p>
+</div>
+
+<div class="film" data-title="Black Clover,Черный клевер,Чёрный клевер" data-cat="anime">
+    <img src="https://m.media-amazon.com/images/I/91EfckNoxRL._AC_UF1000,1000_QL80_.jpg" alt="Black Clover" class="filmimg">
+    <p><a href="https://youtu.be/tF9Znhf9VQk" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Черный клевер</h3>
+    <p><b>Жанр:</b> Аниме, Экшн, Фэнтези</p>
+    <p class="description">Аста и Юно мечтают стать Императором магии, несмотря на отсутствие у Асты магических способностей.</p>
+</div>
+
+<div class="film" data-title="Bleach,Блич" data-cat="anime">
+    <img src="https://shikimori.one/system/user_images/preview/1026996/2357781.jpg" alt="Bleach" class="filmimg">
+    <p><a href="https://youtu.be/lh0aG4zFk1c" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Bleach</h3>
+    <p><b>Жанр:</b> Аниме, Экшн, Фэнтези</p>
+    <p class="description">Ичиго Куросаки получает силы Жнеца душ, чтобы защищать людей и сражаться с злыми духами.</p>
+</div>
+
+<div class="film" data-title="Dragon Ball Z" data-cat="anime">
+    <img src="https://preview.redd.it/was-dragon-ball-z-good-or-bad-v0-z9w9byr2d6pd1.png?auto=webp&s=511b035e8b5d32e6287d3cca9a94b8b16a7ef262" alt="Dragon Ball Z" class="filmimg">
+    <p><a href="https://youtu.be/nBG7YXl5qvE" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Dragon Ball Z</h3>
+    <p><b>Жанр:</b> Аниме, Экшн, Приключения</p>
+    <p class="description">Гоку и его друзья защищают Землю от мощных врагов и ищут драконьи шары.</p>
+</div>
+
+<div class="film" data-title="Sword Art Online,SAO,мастера меча онлайн" data-cat="anime">
+    <img src="https://a.storyblok.com/f/178900/1200x1697/7cea549b0c/sword-art-online-clear-visual.jpg/m/filters:quality(95)format(webp)" alt="Sword Art Online" class="filmimg">
+    <p><a href="https://youtu.be/7q2bM1oy2b0" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Sword Art Online</h3>
+    <p><b>Жанр:</b> Аниме, Приключения, Фэнтези</p>
+    <p class="description">Игроки застряли в виртуальной MMORPG и сражаются за выживание внутри игры.</p>
+</div>
+
+<div class="film" data-title="Hunter x Hunter" data-cat="anime">
+    <img src="https://static.hdrezka.ac/i/2016/8/6/sf940eb1016d2qa49k87t.jpg" alt="Hunter x Hunter" class="filmimg">
+    <p><a href="https://youtu.be/7LO5x8kC2j8" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Hunter x Hunter</h3>
+    <p><b>Жанр:</b> Аниме, Приключения, Экшн</p>
+    <p class="description">Гон идет по стопам отца, чтобы стать охотником и найти важные сокровища.</p>
+</div>
+
+<div class="film" data-title="Mob Psycho 100" data-cat="anime">
+    <img src="https://m.media-amazon.com/images/M/MV5BYzU3NDM4ZjgtY2UyMi00YTczLTgyNDEtMjBiMDJlOGUxNjcxXkEyXkFqcGc@._V1_.jpg" alt="Mob Psycho 100" class="filmimg">
+    <p><a href="https://youtu.be/1N4wq3g11kY" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Mob Psycho 100</h3>
+    <p><b>Жанр:</b> Аниме, Комедия, Сверхъестественное</p>
+    <p class="description">Мальчик с невероятной психической силой пытается жить обычной жизнью.</p>
+</div>
+
+<div class="film" data-title="Steins;Gate" data-cat="anime">
+    <img src="https://m.media-amazon.com/images/M/MV5BZjI1YjZiMDUtZTI3MC00YTA5LWIzMmMtZmQ0NTZiYWM4NTYwXkEyXkFqcGc@._V1_.jpg" alt="Steins Gate" class="filmimg">
+    <p><a href="https://youtu.be/1e5g3Y9k9iM" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Steins;Gate</h3>
+    <p><b>Жанр:</b> Аниме, Научная фантастика, Драма</p>
+    <p class="description">Группа друзей случайно изобретает способ отправлять сообщения в прошлое.</p>
+</div>
+
+<div class="film" data-title="Cowboy Bebop" data-cat="anime">
+    <img src="https://japanimegames.com/cdn/shop/files/JPG250WebsiteArtboard1copy4_3x_ec6cbd81-d8fa-4d21-b531-fb1d37434bf9.png?v=1721080048" alt="Cowboy Bebop" class="filmimg">
+    <p><a href="https://youtu.be/8T4z1q0g8x4" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Cowboy Bebop</h3>
+    <p><b>Жанр:</b> Аниме, Приключения, Нео-вестерн</p>
+    <p class="description">Команда охотников за головами путешествует по космосу в поисках наград и смысла жизни.</p>
+</div>
+
+<div class="film" data-title="Evangelion,Neon Genesis Evangelion" data-cat="anime">
+    <img src="https://m.media-amazon.com/images/I/811rqpJatCL._AC_UF894,1000_QL80_.jpg" alt="Evangelion" class="filmimg">
+    <p><a href="https://youtu.be/Tg1L4oJQbZ8" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Neon Genesis Evangelion</h3>
+    <p><b>Жанр:</b> Аниме, Меха, Психология</p>
+    <p class="description">Подростки управляют гигантскими роботами, чтобы защитить Землю от ангелов — но цена высока.</p>
+</div>
+
+<div class="film" data-title="Parasyte,Паразит" data-cat="anime">
+    <img src="https://m.media-amazon.com/images/M/MV5BMzg2YjA0NGYtYjQwMS00MDQyLWFlNWMtODVhNTBkYWIyNjE1XkEyXkFqcGc@._V1_.jpg" alt="Parasyte" class="filmimg">
+    <p><a href="https://youtu.be/2YBDk-8S1pQ" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Parasyte</h3>
+    <p><b>Жанр:</b> Аниме, Ужасы, Фантастика</p>
+    <p class="description">Паразит врывается в тело подростка — теперь оба вынуждены сосуществовать и сражаться против других паразитов.</p>
+</div>
+
+<div class="film" data-title="Gintama" data-cat="anime">
+    <img src="https://static.hdrezka.ac/i/2023/2/9/obfb913c4b4fckf66e17h.png" alt="Gintama" class="filmimg">
+    <p><a href="https://youtu.be/YKzWgO0b5XQ" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Gintama</h3>
+    <p><b>Жанр:</b> Аниме, Комедия, Приключения</p>
+    <p class="description">Сатирическое и пародийное аниме о самурае-хозяине подработке в эксцентричном мире.</p>
+</div>
+
+<div class="film" data-title="Psycho-Pass" data-cat="anime">
+    <img src="https://m.media-amazon.com/images/M/MV5BNjQ1OTNkZGYtODVlMC00NWI0LWJiYjItMzM4M2U4NjY0ZTYwXkEyXkFqcGc@._V1_.jpg" alt="Psycho-Pass" class="filmimg">
+    <p><a href="https://youtu.be/9pY7kqf9LkA" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+    <h3>Аниме: Psycho-Pass</h3>
+    <p><b>Жанр:</b> Аниме, Киберпанк, Триллер</p>
+    <p class="description">В будущем полиция определяет склонность людей к преступлениям с помощью психологического показателя.</p>
+</div>
+
+
+<div class="film" data-title="Kaguya-sama Love is War" data-cat="anime">
+  <img src="https://m.media-amazon.com/images/M/MV5BMTM1ZWViNWMtZWY2ZC00YmYyLTk1ZGEtMzRjOWI2YTM1OTI3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Kaguya-sama" class="filmimg">
+  <p><a href="https://youtu.be/e7vDgkYyQqE" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: Kaguya-sama: Love is War</h3>
+  <p><b>Жанр:</b> Романтика, Комедия</p>
+  <p class="description">Два гениальных ученика стараются заставить друг друга признаться в любви первыми.</p>
+</div>
+
+<div class="film" data-title="Re:Zero" data-cat="anime">
+  <img src="https://shikimori.one/uploads/poster/animes/54857/main_2x-2b4c8172f820ee20e339f1ffbf0bbe95.webp" alt="Re:Zero" class="filmimg">
+  <p><a href="https://youtu.be/9Vq3Z5b3P3E" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: Re:Zero</h3>
+  <p><b>Жанр:</b> Фэнтези, Драма</p>
+  <p class="description">Парень попадает в другой мир и каждый раз умирает, возвращаясь во времени — пытаясь изменить судьбу.</p>
+</div>
+
+<div class="film" data-title="Vinland Saga" data-cat="anime">
+  <img src="https://m.media-amazon.com/images/M/MV5BNDA3MGNmZTEtMzFiMy00ZmViLThhNmQtMjQ4ZDc5MDEyN2U1XkEyXkFqcGc@._V1_.jpg" alt="Vinland Saga" class="filmimg">
+  <p><a href="https://youtu.be/8kqcK0M8qfA" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: Vinland Saga</h3>
+  <p><b>Жанр:</b> История, Экшн, Драма</p>
+  <p class="description">Сага о викингах, мести и поиске смысла жизни в жестоком мире.</p>
+</div>
+
+<div class="film" data-title="Sailor Moon" data-cat="anime">
+  <img src="https://m.media-amazon.com/images/M/MV5BNDBhMGE3ZjAtM2VlYi00ZDVhLThiNDgtNTIxNzY5NjJmYWUyXkEyXkFqcGc@._V1_.jpg" alt="Sailor Moon" class="filmimg">
+  <p><a href="https://youtu.be/3gqQ8WQf1yQ" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: Sailor Moon</h3>
+  <p><b>Жанр:</b> Махо-сёдзё, Приключения</p>
+  <p class="description">Группа школьниц-воинов защищает Землю от темных сил и учится взрослеть.</p>
+</div>
+
+<div class="film" data-title="Magi" data-cat="anime">
+  <img src="https://m.media-amazon.com/images/I/81OGoMjeQ2L._AC_UF894,1000_QL80_.jpg" alt="Magi" class="filmimg">
+  <p><a href="https://youtu.be/Lg3lJ2vH0yw" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: Magi</h3>
+  <p><b>Жанр:</b> Фэнтези, Приключения</p>
+  <p class="description">Приключения в сказочном мире, полные магии, дворцов и сражений.</p>
+</div>
+
+<div class="film" data-title="Black Lagoon" data-cat="anime">
+  <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Black_Lagoon_01.png" alt="Black Lagoon" class="filmimg">
+  <p><a href="https://youtu.be/5bG7mD0rPvg" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: Black Lagoon</h3>
+  <p><b>Жанр:</b> Экшн, Триллер</p>
+  <p class="description">Наёмники в Азии выполняют опасные задания в криминальном мире.</p>
+</div>
+
+<div class="film" data-title="Princess Mononoke" data-cat="movie">
+  <img src="https://m.media-amazon.com/images/M/MV5BZTcyN2Y0MDYtMGI1NC00MWQ1LWFhZGMtN2U4NTcxZGYyNjljXkEyXkFqcGc@._V1_.jpg" alt="Princess Mononoke" class="filmimg">
+  <p><a href="https://youtu.be/4OiMOHRDs14" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Фильм: Princess Mononoke</h3>
+  <p><b>Жанр:</b> Мультфильм, Фэнтези</p>
+  <p class="description">Эпическая история студии Ghibli о природе, духах и конфликте человека и леса.</p>
+</div>
+
+<div class="film" data-title="Spirited Away" data-cat="movie">
+  <img src="https://m.media-amazon.com/images/M/MV5BNTEyNmEwOWUtYzkyOC00ZTQ4LTllZmUtMjk0Y2YwOGUzYjRiXkEyXkFqcGc@._V1_.jpg" alt="Spirited Away" class="filmimg">
+  <p><a href="https://youtu.be/ByXuk9QqQkk" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Фильм: Spirited Away</h3>
+  <p><b>Жанр:</b> Мультфильм, Фэнтези</p>
+  <p class="description">Девочка попадает в мир духов и должна найти путь домой, спасая друзей.</p>
+</div>
+
+<div class="film" data-title="Log Horizon" data-cat="anime">
+  <img src="https://m.media-amazon.com/images/M/MV5BOTk2MzEwZWItYTlhYS00ZjcwLTk5N2YtOWFkYmRlYTJkOWY4XkEyXkFqcGc@._V1_.jpg" alt="Log Horizon" class="filmimg">
+  <p><a href="https://youtu.be/Q2nS1b2pQY8" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: Log Horizon</h3>
+  <p><b>Жанр:</b> Приключения, MMORPG</p>
+  <p class="description">Игроки оказываются в игровом мире и строят новое общество внутри него.</p>
+</div>
+
+<div class="film" data-title="Erased" data-cat="anime">
+  <img src="https://m.media-amazon.com/images/M/MV5BZWQ2YmI5NWMtZTY2Mi00MGUxLWFhMmEtYjVjZjMwOTNkOThjXkEyXkFqcGc@._V1_.jpg" alt="Erased" class="filmimg">
+  <p><a href="https://youtu.be/0WfgmJbT0z8" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: Erased</h3>
+  <p><b>Жанр:</b> Детектив, Драма, Путешествия во времени</p>
+  <p class="description">Главный герой возвращается в прошлое, чтобы предотвратить убийства и трагедии.</p>
+</div>
+
+<div class="film" data-title="Angel Beats" data-cat="anime">
+  <img src="https://static.hdrezka.ac/i/2016/3/27/ec5603358dc34nd79i32q.jpg" alt="Angel Beats" class="filmimg">
+  <p><a href="https://youtu.be/eeq4J5gq8vM" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: Angel Beats</h3>
+  <p><b>Жанр:</b> Драма, Комедия, Сверхъестественное</p>
+  <p class="description">Группа подростков в потусторонней школе борется за покой и смысл.</p>
+</div>
+
+<div class="film" data-title="Kenshin,Rurouni Kenshin" data-cat="movie">
+  <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Rurouni_Kenshin_%282023_TV_series%29.png" alt="Rurouni Kenshin" class="filmimg">
+  <p><a href="https://youtu.be/1gQ0V3v0t6c" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Фильм/Аниме: Rurouni Kenshin</h3>
+  <p><b>Жанр:</b> История, Экшн</p>
+  <p class="description">История бывшего убийцы, ищущего искупление в эпоху Мэйдзи.</p>
+</div>
+
+<div class="film" data-title="The Promised Neverland" data-cat="anime">
+  <img src="https://m.media-amazon.com/images/I/81GIb6GMhRL.jpg" alt="The Promised Neverland" class="filmimg">
+  <p><a href="https://youtu.be/5r9g5c6y3LQ" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: The Promised Neverland</h3>
+  <p><b>Жанр:</b> Триллер, Детектив</p>
+  <p class="description">Дети из приюта обнаруживают ужасную правду и пытаются сбежать ради выживания.</p>
+</div>
+
+<div class="film" data-title="Kimi no Na wa,Your Name" data-cat="movie">
+  <img src="https://m.media-amazon.com/images/M/MV5BMTIyNzFjNzItZmQ1MC00NzhjLThmMzYtZjRhN2Y3MmM2OGQyXkEyXkFqcGc@._V1_.jpg" alt="Your Name" class="filmimg">
+  <p><a href="https://youtu.be/3a1l1k9-J0s" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Фильм: Your Name</h3>
+  <p><b>Жанр:</b> Романтика, Фэнтези</p>
+  <p class="description">Двое подростков по очереди просыпаются в телах друг друга и пытаются разгадать тайну связи.</p>
+</div>
+
+<div class="film" data-title="Castle in the Sky" data-cat="movie">
+  <img src="https://m.media-amazon.com/images/M/MV5BZjcyMjg2MzktNjg4YS00MjQzLTg0YWQtMjUyZDk2Y2Y0YzZjXkEyXkFqcGc@._V1_.jpg" alt="Castle in the Sky" class="filmimg">
+  <p><a href="https://youtu.be/6W9sGZr4wfk" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Фильм: Castle in the Sky</h3>
+  <p><b>Жанр:</b> Мультфильм, Приключения</p>
+  <p class="description">Детская приключенческая история с летящим островом и скрытыми секретами.</p>
+</div>
+
+<div class="film" data-title="No Game No Life" data-cat="anime">
+  <img src="https://static.wikia.nocookie.net/ani-manga/images/d/d1/No_Game_No_Life_Poster.jpg/revision/latest?cb=20210813205256&path-prefix=ru" alt="No Game No Life" class="filmimg">
+  <p><a href="https://youtu.be/2Q3U9H2E3h8" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: No Game No Life</h3>
+  <p><b>Жанр:</b> Фэнтези, Игра</p>
+  <p class="description">Брат и сестра-гении попадают в мир, где всё решается играми.</p>
+</div>
+
+<div class="film" data-title="Great Pretender" data-cat="anime">
+  <img src="https://m.media-amazon.com/images/M/MV5BNmMzOTdlNmEtNWYyZi00ZGJiLWJlNjktN2Y5MTI0OGM4MTJjXkEyXkFqcGc@._V1_.jpg" alt="Great Pretender" class="filmimg">
+  <p><a href="https://youtu.be/ORi3bPq4h0A" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Аниме: Great Pretender</h3>
+  <p><b>Жанр:</b> Криминал, Комедия</p>
+  <p class="description">Мастера афер объединяются, чтобы провернуть грандиозные схемы по всему миру.</p>
+</div>
+
+<div class="film" data-title="A Silent Voice,Koe no Katachi" data-cat="movie">
+  <img src="https://m.media-amazon.com/images/M/MV5BOTFiNzRiOWEtYTQwNy00NmRiLWE0ZWYtNTE0YjExZjFmZjkwXkEyXkFqcGc@._V1_.jpg" alt="A Silent Voice" class="filmimg">
+  <p><a href="https://youtu.be/0Bv9E9d0aZ8" class="trailer-btn" target="_blank">Смотреть трейлер</a></p>
+  <h3>Фильм: A Silent Voice</h3>
+  <p><b>Жанр:</b> Драма, Школа</p>
+  <p class="description">История искупления и общения между бывшими обидчиками и жертвой в школе.</p>
+</div>
+
+<!-- ========== КОНЕЦ БЛОКА ========== -->
+
+    </div>
+
+<!-- Если ничего не найдено -->
+<p id="no-results" style="display:none;text-align:center;color:#e50914;">
+    Фильмы не найдены
+</p>
+
+<!-- ===== О НАС ===== -->
+<section id="about" class="section">
+    <h2>О нас</h2>
+    <p>Kinibiz — сайт для поиска фильмов и аниме с трейлерами.</p>
+</section>
+
+<!-- ===== КОНТАКТЫ ===== -->
+<section id="contacts" class="section">
+    <h2>Контакты</h2>
+    <p>📧 Email: aqua18@gmail.com</p>
+    <p>📱 Telegram: @aqua18</p>
+</section>
+
+<!-- ===== ПОДВАЛ ===== -->
+<footer class="footer">
+    © 2025 Kinibiz
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+
+    /* ===== ПОИСК ФИЛЬМОВ ===== */
+    document.getElementById("search").addEventListener("input", function(){
+
+        let text = this.value.toLowerCase(); // текст поиска
+        let films = document.querySelectorAll(".film"); // все фильмы
+        let found = false; // найден ли фильм
+
+        films.forEach(film=>{
+            let title = film.dataset.title.toLowerCase(); // название фильма
+
+            if(title.includes(text)){
+                film.style.display="block"; // показываем
+                found=true;
+            }else{
+                film.style.display="none"; // скрываем
+            }
+        });
+
+        document.getElementById("no-results").style.display =
+            found ? "none" : "block";
+    });
+
+    /* ===== ФИЛЬТР ПО КАТЕГОРИЯМ ===== */
+    document.querySelectorAll(".categories button").forEach(btn=>{
+        btn.onclick=()=>{
+
+            document.querySelectorAll(".categories button")
+                .forEach(b=>b.classList.remove("active"));
+
+            btn.classList.add("active");
+
+            let cat = btn.dataset.cat;
+            let films = document.querySelectorAll(".film");
+
+            films.forEach(film=>{
+                if(cat==="all" || film.dataset.cat===cat){
+                    film.style.display="block";
+                }else{
+                    film.style.display="none";
+                }
+            });
+        };
+    });
+
+</script>
+
+</body>
+</html>
